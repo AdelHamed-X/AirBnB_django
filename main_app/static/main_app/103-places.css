@@ -70,15 +70,15 @@ article>h2 {
 }
 
 .max_guest {
-    background-image: url(images/icon_group.png);
+    background-image: url(../main_app/images/icon_group.png);
 }
 
 .number_rooms {
-    background-image: url(images/icon_bed.png);
+    background-image: url(../main_app/images/icon_bed.png);
 }
 
 .number_bathrooms {
-    background-image: url(images/icon_bath.png);
+    background-image: url(../main_app/images/icon_bath.png);
 }
 
 .user {
@@ -108,15 +108,15 @@ article>h2 {
 }
 
 .tv {
-    background-image: url(images/icon_tv.png);
+    background-image: url(../main_app/images/icon_tv.png);
 }
 
 .wifi {
-    background-image: url(images/icon_wifi.png);
+    background-image: url(../main_app/images/icon_wifi.png);
 }
 
 .pets {
-    background-image: url(images/icon_pets.png);
+    background-image: url(../main_app/images/icon_pets.png);
 }
 
 .reviews {

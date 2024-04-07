@@ -10,13 +10,13 @@ class BaseModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
+
     class Meta:
         abstract = True
     
     def __str__(self) -> str:
         """ String representation for each instance """
-        if self.name:
+        if hasattr(self, "name"):
             return f"{self.name}"
         else: 
             return f"{self.__class__.__name__}: {self.id}"
@@ -48,7 +48,7 @@ class Amenity(BaseModel):
 
 class Place(BaseModel):
     """ Main Place class """
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="places", null=False)
+    user_id = models.ManyToManyField(User, related_name="places", null=False)
     name = models.CharField(max_length=255, null=False)
     city_id = models.ForeignKey(City, on_delete=models.CASCADE, related_name="places", null=False)
     description = models.CharField(max_length=255)
@@ -58,3 +58,9 @@ class Place(BaseModel):
     price_by_night = models.IntegerField(default=0)
     latitude = models.DecimalField(max_digits=9, decimal_places=6)
     longitude = models.DecimalField(max_digits=9, decimal_places=6)
+
+
+class Review(BaseModel):
+    place_id = models.ForeignKey(Place, on_delete=models.CASCADE, related_name="reviews", null=False)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="reviews", null=False)
+    text = models.CharField(max_length=255)
